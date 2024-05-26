@@ -1,22 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:sos/src/feature/home/widgets/alarm_button.dart';
+import 'package:sos/src/feature/home/widgets/cubit/sos_cubit.dart';
 import 'package:sos/src/feature/home/widgets/map_button.dart';
 import 'package:sos/src/feature/home/widgets/torch_button.dart';
 
 import 'widgets/sos_button.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  final SosCubit controller;
+  const HomePage({super.key, required this.controller});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Column(
         children: [
           Expanded(
-            child: SosButton(),
+            child: SosButton(
+              controller: controller,
+            ),
           ),
-          Padding(
+          const Padding(
             padding: EdgeInsets.all(20.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
