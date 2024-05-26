@@ -1,6 +1,7 @@
 import 'package:asyncstate/asyncstate.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_getit/flutter_getit.dart';
+import 'package:sos/src/core/bindings/application_binding.dart';
 
 import 'src/feature/home/home_module.dart';
 import 'src/feature/splash/splash_module.dart';
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterGetIt(
+      bindings: ApplicationBinding(),
       modules: [
         SplashModule(),
         HomeModule(),
