@@ -10,12 +10,33 @@ class ConfirmDialog extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           const Text('Deseja realmente ativar o SOS?'),
+          const SizedBox(height: 30),
           TweenAnimationBuilder<double>(
             tween: Tween<double>(begin: 0, end: 5),
             duration: const Duration(seconds: 5),
             builder: (context, value, child) {
-              return CircularProgressIndicator(
-                value: value / 5,
+              return SizedBox(
+                height: 150,
+                width: 150,
+                child: Stack(
+                  fit: StackFit.expand,
+                  alignment: Alignment.center,
+                  children: [
+                    CircularProgressIndicator(
+                      color: Colors.red,
+                      strokeWidth: 20,
+                      value: value / 5,
+                    ),
+                    Center(
+                      child: Text(
+                        value.toStringAsFixed(0),
+                        style: TextStyle(
+                          fontSize: 30,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               );
             },
           )
