@@ -12,6 +12,9 @@ class ConfirmDialog extends StatelessWidget {
           const Text('Deseja realmente ativar o SOS?'),
           const SizedBox(height: 30),
           TweenAnimationBuilder<double>(
+            onEnd: () {
+              Navigator.of(context).pop(true);
+            },
             tween: Tween<double>(begin: 0, end: 5),
             duration: const Duration(seconds: 5),
             builder: (context, value, child) {
@@ -30,7 +33,7 @@ class ConfirmDialog extends StatelessWidget {
                     Center(
                       child: Text(
                         value.toStringAsFixed(0),
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 30,
                         ),
                       ),
@@ -45,7 +48,7 @@ class ConfirmDialog extends StatelessWidget {
       actions: [
         ElevatedButton(
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.of(context).pop(false);
             },
             child: const Text('Cancelar'))
       ],
