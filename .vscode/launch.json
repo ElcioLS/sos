@@ -7,7 +7,11 @@
         {
             "name": "sos",
             "request": "launch",
-            "type": "dart"
+            "type": "dart",
+            "args":[
+                "--dart-define-from-file",
+                "config/config.json"
+            ]
         },
         {
             "name": "sos (profile mode)",
