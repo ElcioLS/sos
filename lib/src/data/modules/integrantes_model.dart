@@ -2,7 +2,7 @@ import 'dart:convert';
 
 class IntegrantesModel {
   final String tipo;
-  final String quantidade;
+  final int quantidade;
   IntegrantesModel({
     required this.tipo,
     required this.quantidade,
@@ -10,7 +10,7 @@ class IntegrantesModel {
 
   IntegrantesModel copyWith({
     String? tipo,
-    String? quantidade,
+    int? quantidade,
   }) {
     return IntegrantesModel(
       tipo: tipo ?? this.tipo,
@@ -28,7 +28,7 @@ class IntegrantesModel {
   factory IntegrantesModel.fromMap(Map<String, dynamic> map) {
     return IntegrantesModel(
       tipo: map['tipo'] ?? '',
-      quantidade: map['quantidade'] ?? '',
+      quantidade: map['quantidade']?.toInt() ?? 0,
     );
   }
 

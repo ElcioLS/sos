@@ -1,7 +1,5 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
+
 import 'package:sos/src/data/modules/user_model.dart';
 
 import './user_repository.dart';
@@ -16,13 +14,20 @@ class UserRepositoryImpl implements UserRepository {
     final response = await _dio.post('/login');
 
     if (response.statusCode == 200) {
-      log(response.data.toString());
+      return UserModel.fromMap(response.data['result']['user']);
     }
   }
 
   @override
-  Future<UserModel?> me({required String sessionToken}) {
-    throw UnimplementedError();
+  Future<UserModel?> me({required String sessionToken}) async {
+    final response =
+        await _dio.post('/me', data: {'sessionToken': sessionToken});
+
+    if (response.statusCode == 200) {
+      return UserModel.fromMap(response.data['result']['user']);
+    }
+
+    return null;
   }
 
   @override

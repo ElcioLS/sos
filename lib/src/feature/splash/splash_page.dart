@@ -30,6 +30,10 @@ class _SplashPageState extends State<SplashPage> {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text(state.erro)));
         }
+
+        if (state is SplashLoggedState) {
+          Navigator.of(context).pushReplacementNamed('/home');
+        }
       },
       child: Scaffold(
         body: Center(

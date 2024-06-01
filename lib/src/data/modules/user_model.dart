@@ -61,7 +61,7 @@ class UserModel {
       name: map['name'] ?? '',
       visible: map['visible'] ?? false,
       sessionToken: map['sessionToken'] ?? '',
-      distance: map['distance']?.toDouble() ?? 0.0,
+      distance: double.tryParse(map['distance'].toString()) ?? 0.0,
       integrantes: List<IntegrantesModel>.from(
           map['integrantes']?.map((x) => IntegrantesModel.fromMap(x))),
     );
