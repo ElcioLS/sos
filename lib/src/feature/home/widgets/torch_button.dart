@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:torch_controller/torch_controller.dart';
 
 class TorchButton extends StatefulWidget {
   const TorchButton({super.key});
@@ -8,6 +9,7 @@ class TorchButton extends StatefulWidget {
 }
 
 class _TorchButtonState extends State<TorchButton> {
+  final TorchController controller = TorchController();
   bool active = false;
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,7 @@ class _TorchButtonState extends State<TorchButton> {
       onPressed: () {
         setState(() {
           active = !active;
+          controller.toggle();
         });
       },
       child: Icon(
