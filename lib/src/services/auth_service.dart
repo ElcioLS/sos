@@ -17,11 +17,6 @@ class AuthService {
   Future<bool> login() async {
     final sessionToken = await _storage.read(key: 'sessionToken');
 
-    // outra forma de falzer login
-    // final userRepository = (sessionToken)
-    //     ? _repository.me(sessionToken: sessionToken!)
-    //     : _repository.login();
-
     if (sessionToken == null) {
       final userRepository = await _repository.login();
       if (userRepository != null) {

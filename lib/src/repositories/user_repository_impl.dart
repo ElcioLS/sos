@@ -24,14 +24,24 @@ class UserRepositoryImpl implements UserRepository {
         await _dio.post('/me', data: {'sessionToken': sessionToken});
 
     if (response.statusCode == 200) {
-      return UserModel.fromMap(response.data['result']['user']);
+      if (response.data['result']['success'] ?? false) {
+        return UserModel.fromMap(response.data['result']['user']);
+      }
     }
 
     return null;
   }
 
   @override
-  Future<UserModel?> update({required UserModel user}) {
-    throw UnimplementedError();
+  Future<UserModel?> update({required UserModel user}) async {
+    final response = await _dio.post('/update', data: user.toMap());
+
+    if (response.statusCode == 200) {
+      if (response.data['result']['success'] ?? false) {
+        return UserModel.fromMap(response.data['result']['user']);
+      }
+    }
+
+    return null;
   }
 }

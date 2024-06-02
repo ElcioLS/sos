@@ -9,7 +9,7 @@ class UserConfigModule extends FlutterGetItModulePageRouter {
 
   @override
   List<Bind<Object>> get bindings => [
-        Bind.lazySingleton((i) => UserCubit()),
+        Bind.lazySingleton((i) => UserCubit(repository: i(), service: i())),
       ];
 
   @override
