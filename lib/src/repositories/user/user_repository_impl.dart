@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 
 import 'package:sos/src/data/modules/user_model.dart';
 
-import './user_repository.dart';
+import 'user_repository.dart';
 
 class UserRepositoryImpl implements UserRepository {
   final Dio _dio;

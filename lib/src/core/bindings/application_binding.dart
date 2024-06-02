@@ -3,8 +3,8 @@ import 'package:dio/dio.dart';
 import 'package:flutter_getit/flutter_getit.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:sos/src/core/interceptor/b4a_intercept.dart';
-import 'package:sos/src/repositories/user_repository.dart';
-import 'package:sos/src/repositories/user_repository_impl.dart';
+import 'package:sos/src/repositories/user/user_repository.dart';
+import 'package:sos/src/repositories/user/user_repository_impl.dart';
 import 'package:sos/src/services/auth_service.dart';
 
 class ApplicationBinding extends ApplicationBindings {

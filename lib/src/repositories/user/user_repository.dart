@@ -1,4 +1,4 @@
-import '../data/modules/user_model.dart';
+import '../../data/modules/user_model.dart';
 
 abstract interface class UserRepository {
   Future<UserModel?> login();
