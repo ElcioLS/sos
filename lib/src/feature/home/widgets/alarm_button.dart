@@ -1,4 +1,6 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_getit/flutter_getit.dart';
 
 class AlarmButton extends StatefulWidget {
   const AlarmButton({super.key});
@@ -9,6 +11,16 @@ class AlarmButton extends StatefulWidget {
 
 class _AlarmButtonState extends State<AlarmButton> {
   bool enable = false;
+
+  AudioPlayer? audioPlayer;
+
+  @override
+  void initState() {
+    audioPlayer = context.get();
+    audioPlayer?.setSource(AssetSource('audios/siren.wav'));
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton.small(
@@ -18,6 +30,11 @@ class _AlarmButtonState extends State<AlarmButton> {
       onPressed: () {
         setState(() {
           enable = !enable;
+          if (enable) {
+            audioPlayer?.resume();
+          } else {
+            audioPlayer?.stop();
+          }
         });
       },
       child: Icon(enable ? Icons.volume_off : Icons.volume_up),
