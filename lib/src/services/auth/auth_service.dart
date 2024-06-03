@@ -1,7 +1,7 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:sos/src/repositories/user/user_repository.dart';
 
-import '../data/modules/user_model.dart';
+import '../../data/modules/user_model.dart';
 
 class AuthService {
   UserModel? user;

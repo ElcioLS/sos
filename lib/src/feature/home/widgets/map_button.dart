@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sos/src/feature/home/widgets/map/map_module.dart';
 
 class MapButton extends StatefulWidget {
   const MapButton({super.key});
@@ -16,9 +17,10 @@ class _MapButtonState extends State<MapButton> {
       backgroundColor: Colors.green,
       heroTag: 'map_button',
       onPressed: () {
-        setState(() {
-          enable = !enable;
-        });
+        showModalBottomSheet(
+            showDragHandle: true,
+            context: context,
+            builder: (context) => MapModule());
       },
       child: Icon(enable ? Icons.flood_outlined : Icons.flood_rounded),
     );

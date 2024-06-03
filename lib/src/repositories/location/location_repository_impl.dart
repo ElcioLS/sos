@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:sos/src/data/modules/user_model.dart';
 
 import './location_repository.dart';
 
@@ -32,5 +33,23 @@ class LocationRepositoryImpl implements LocationRepository {
       return true;
     }
     return false;
+  }
+
+  @override
+  Future<List<UserModel>?> nearby({required String sessionToken}) async {
+    final response = await dio.post('/getNearby', data: {
+      'sessionToken': sessionToken,
+    });
+    if (response.statusCode == 200) {
+      return (response.data['result']['nearbyLocations'] as List)
+          .map(
+            (user) => UserModel.fromMap(
+              user['user'],
+            ),
+          )
+          .toList();
+      // print(response.data);
+    }
+    return null;
   }
 }

@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:sos/src/services/auth_service.dart';
+import 'package:sos/src/services/auth/auth_service.dart';
 
 part 'splash_state.dart';
 
