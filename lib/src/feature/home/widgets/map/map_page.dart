@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_getit/flutter_getit.dart';
@@ -13,9 +16,23 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
+  Timer? timer;
+
   @override
   void initState() {
     super.initState();
+
+    timer = Timer.periodic(Duration(seconds: 3), (_) {
+      log('Timer rodando');
+      context.get<MapCubit>().getLocation();
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    timer?.cancel();
+    log('Timer cancelado!');
   }
 
   @override

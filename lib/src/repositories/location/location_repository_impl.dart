@@ -39,6 +39,7 @@ class LocationRepositoryImpl implements LocationRepository {
   Future<List<UserModel>?> nearby({required String sessionToken}) async {
     final response = await dio.post('/getNearby', data: {
       'sessionToken': sessionToken,
+      'range': 100,
     });
     if (response.statusCode == 200) {
       return (response.data['result']['nearbyLocations'] as List)

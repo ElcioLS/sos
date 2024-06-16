@@ -20,6 +20,10 @@ class MapCubit extends Cubit<MapState> {
 
   Future<void> nearby() async {
     emit(MapLoading());
+    await getLocation();
+  }
+
+  Future<void> getLocation() async {
     final users =
         await _repository.nearby(sessionToken: _service.user!.sessionToken);
 
